@@ -1,0 +1,55 @@
+.mark-down{
+
+  blockquote{
+    border-left: 2px solid black;
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background: #dae9ff;
+  }
+
+  pre{
+    background: #b2b2b2;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  h1,h2,h3,h4,h5,h6{
+    margin-bottom: 10px;
+  }
+
+  p{
+    margin-bottom: 5px;
+  }
+
+  table{
+    border: 1px solid black;
+    border-collapse: collapse;
+
+    tr{
+      border-bottom: 1px solid black;
+    }
+    th{
+      border-left: 1px solid black;
+      text-align: center;
+      padding: 2px 4px;
+    }
+    td{
+      border-left: 1px solid black;
+      text-align: center;
+      padding: 2px 4px;
+    }
+  }
+
+  ul{
+    li{
+      margin-left: 20px;
+    }
+  }
+
+  ol{
+    li{
+      margin-left: 20px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@ron_tayler/logic-world-hub_front-end",
-  "version": "0.1.0",
+  "version": "0.1.1-alpha",
   "private": true,
   "author": "Ron_Tayler",
   "scripts": {
@@ -28,7 +28,9 @@
     "panolens": "^0.12.1",
     "markdown-it": "^13.0.1",
     "vue-horizontal": "^0.8.12",
-    "v-tooltip": "2.1.3"
+    "v-tooltip": "2.1.3",
+    "io-ts": "^2.2.20",
+    "io-ts-types": "^0.5.19"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
