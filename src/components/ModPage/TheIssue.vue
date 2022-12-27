@@ -31,7 +31,7 @@
     hr
     .issue__new_post
       .issue__new_post__text_area_box
-        textarea(v-model="text")
+        textarea(v-model="text" @keydown.enter="sendPost")
       .issue__new_post__button_box
         button.issue__new_post__button(@click="sendPost") Отправить
 </template>
@@ -69,6 +69,7 @@ export default class TheIssue extends Vue {
 
   sendPost(){
     ModsCtx.dispatch("sendPost",this.text)
+    .then(()=>{this.text = ""})
   }
 
   mounted(){

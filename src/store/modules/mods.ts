@@ -207,7 +207,11 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     }
 
     async sendPost(text: string){
-
+        const issue_id = this.state.issue?.id ?? 0
+        if(issue_id == 0) return;
+        return axios
+            .post(`http://localhost:3000/api/v1/mods/mod/issue/${issue_id}/post/send`,{text})
+            .then(() => this.dispatch("getIssue",issue_id))
     }
 }
 
