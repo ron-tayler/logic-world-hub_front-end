@@ -1,3 +1,3 @@
 export default {
-    title: "Logic World Multi Hub"
+    "title": "Logic World Multi Hub"
 }
