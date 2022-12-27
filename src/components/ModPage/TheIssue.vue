@@ -4,7 +4,7 @@
       .issue_info
         .issue__type
           font-awesome-icon(:icon="typeIcon")
-        h3.issue__name Заголовок обсуждения
+        h3.issue__name {{issue.name}}
       .issue__controls
         button.issue__control(v-tooltip="'Редактировать'")
           font-awesome-icon(icon="fa-solid fa-pen")
@@ -14,36 +14,69 @@
           font-awesome-icon(icon="fa-solid fa-bell")
     hr
     .issue__posts
-      .issue__post(v-for="i in 2" :key="i")
+      .issue__post(v-for="post in posts" :key="post.id")
         .post__header
           .post__info
-            .post__avatar i
-            .post__nick Ron_Tayler
-            .post__date 20.12.2022 08:50
+            .post__avatar
+              img(:src="post.author.avatar")
+            .post__nick {{post.author.nick}}
+            .post__date {{post.createDate.toLocaleString()}}
           .post__buttons
             button.post__button(v-tooltip="'Пожаловаться'")
               font-awesome-icon(icon="fa-solid fa-ban")
             button.post__button(v-tooltip="'Ответить'")
               font-awesome-icon(icon="fa-solid fa-reply")
         .post__body
-          span Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti in inventore perferendis quo. Accusantium at culpa cumque deleniti, dignissimos distinctio dolores facilis iure minus, nulla officia porro, possimus tempore? Dolor et eum magni non placeat quisquam sit ut. At, est, vel. Architecto cum doloremque obcaecati odit porro reiciendis tempore, unde!
+          span {{post.text}}
     hr
     .issue__new_post
       .issue__new_post__text_area_box
-        textarea
+        textarea(v-model="text")
       .issue__new_post__button_box
-        button.issue__new_post__button Отправить
+        button.issue__new_post__button(@click="sendPost") Отправить
 </template>
 
 <script lang="ts">
-import {Vue, Component} from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
+import {ModsCtx} from "@/store";
+import {EnumIssueType} from "@/store/schemes/EnumIssueType";
 
 @Component({
   name: "TheIssue"
 })
 export default class TheIssue extends Vue {
+  text = ""
+
   get typeIcon(){
-    return "fa-solid fa-bug"
+    if(!this.issue) return "fa-solid fa-notdef"
+    switch (this.issue.type) {
+      case EnumIssueType.GENERAL: return "fa-solid fa-comments"
+      case EnumIssueType.BUGS: return "fa-solid fa-bug"
+      case EnumIssueType.ANNOUNCEMENTS: return "fa-solid fa-bullhorn"
+      case EnumIssueType.IDEAS: return "fa-solid fa-lightbulb"
+      default: return "fa-solid fa-notdef"
+    }
+  }
+  get issue(){
+    return ModsCtx.state.issue
+  }
+  get posts(){
+    return ModsCtx.state.issuePosts
+  }
+  get issueDate(){
+    return this.issue?.createDate.toLocaleString() ?? ""
+  }
+
+  sendPost(){
+    ModsCtx.dispatch("sendPost",this.text)
+  }
+
+  mounted(){
+    const issue_id = this.$route.params?.issue_id ?? "0"
+    ModsCtx.dispatch("getIssue",Number(issue_id))
+      .catch(()=>{
+        this.$router.replace("/NotFound")
+      })
   }
 }
 </script>
@@ -145,6 +178,7 @@ export default class TheIssue extends Vue {
 .issue__new_post__button
   background: var(--button-background)
   color: var(--text-color)
+  font-weight: bold
   border: 2px solid var(--block-border)
   border-radius: 5px
   padding: 5px 10px

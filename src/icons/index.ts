@@ -20,7 +20,11 @@ import {
     faBookmark,
     faPen,
     faBug,
-    faBan
+    faBan,
+    faSpinner,
+    faBullhorn,
+    faLightbulb,
+    faNotdef
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faGithub
@@ -48,5 +52,9 @@ library.add(faBookmark)
 library.add(faPen)
 library.add(faBug)
 library.add(faBan)
+library.add(faSpinner)
+library.add(faBullhorn)
+library.add(faLightbulb)
+library.add(faNotdef)
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

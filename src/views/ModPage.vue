@@ -7,7 +7,12 @@
       .mod__window__cols
         .mod__window_left
           .mod__window_tabs
-            .mod__window_tab(v-for="tab in tabs" :key="tab" :class="{active:tab===selectTabIndex}" @click="selectTab(tab)") {{getTabName(tab)}}
+            .mod__window_tab(
+              v-for="tab in tabs"
+              :key="tab"
+              :class="{active:tab===selectTabIndex}"
+              @click="selectTab(tab)"
+              ) {{getTabName(tab)}}
           .mod__window_main_body
             router-view(:mod="mod")
         .mod__window_right

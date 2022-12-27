@@ -1,8 +1,9 @@
 <template lang="pug">
   #app_version
-    .app_version__tape
-      .app_version__body
-        span {{version}}
+    .app_version__box
+      .app_version__tape
+        .app_version__body
+          span {{version}}
 </template>
 
 <script lang="ts">
@@ -23,15 +24,23 @@ export default class TheAppVersion extends Vue {
 <style lang="sass" scoped>
 #app_version
   position: absolute
-  right: -110px
-  top: -110px
+  top: 0
+  right: 0
   z-index: 10
-  height: 300px
-  width: 300px
+  height: 100px
+  width: 100px
+  pointer-events: none
+  overflow: hidden
+.app_version__box
+  position: absolute
+  top: 0
+  right: 0
+  width: 30px
+  height: 30px
   display: flex
   justify-content: center
   align-items: center
-  pointer-events: none
+  transform: rotate(45deg) translateY(30px)
 .app_version__tape
   display: flex
   align-items: center
@@ -41,14 +50,9 @@ export default class TheAppVersion extends Vue {
     color: #8d8600
   height: 30px
   width: 300px
-  color: white
-  transform: rotate(45deg)
-  opacity: 1
-  transition: opacity 0.2s ease-in-out
-  &:hover
-    opacity: 0.2
 .app_version__body
   background: #232323f0
+  color: white
   height: 20px
   width: 300px
   display: flex

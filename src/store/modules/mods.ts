@@ -61,10 +61,9 @@ class ModsMutations extends Mutations<ModsState> {
 }
 
 class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsActions> {
-    async getMods(){
-        this.state.mods = []
+    async getModsMostDownloads(){
         return axios
-            .get("http://localhost:3000/api/v1/mods/all")
+            .get("http://localhost:3000/api/v1/mods/most-downloaded")
             .then((response)=>{
                 const result = IO.array(ModMinimal).decode(response.data)
                 if(result._tag == "Left") return;
@@ -72,8 +71,28 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
                 this.commit("saveModsByLoad",mods)
             })
     }
+    async getModsNews(){
+        return axios
+            .get("http://localhost:3000/api/v1/mods/news")
+            .then((response)=>{
+                const result = IO.array(ModMinimal).decode(response.data)
+                if(result._tag == "Left") return;
+                const mods = result.right
+                this.commit("saveModsByLoad",mods)
+            })
+    }
+    async getModsRecentlyUpdated(){
+        return axios
+            .get("http://localhost:3000/api/v1/mods/recently-updated")
+            .then((response)=>{
+                const result = IO.array(ModMinimal).decode(response.data)
+                if(result._tag == "Left") return;
+                const mods = result.right
+                this.commit("saveModsByLoad",mods)
+            })
+    }
+
     async getMod(mod_id: number){
-        this.state.mod = null
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}`)
             .then(response=>{
@@ -89,7 +108,6 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     async getTags(){
         const mod_id = this.state.mod?.id ?? 0
         if(mod_id == 0) return;
-        this.state.tags = []
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}/tags`)
             .then(response=>{
@@ -102,7 +120,6 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     async getImages(){
         const mod_id = this.state.mod?.id ?? 0
         if(mod_id == 0) return;
-        this.state.images = []
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}/images`)
             .then(response=>{
@@ -115,7 +132,6 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     async getVersions(){
         const mod_id = this.state.mod?.id ?? 0
         if(mod_id == 0) return;
-        this.state.versions = []
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}/versions`)
             .then(response=>{
@@ -128,7 +144,6 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     async getAuthors(){
         const mod_id = this.state.mod?.id ?? 0
         if(mod_id == 0) return;
-        this.state.authors = []
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}/authors`)
             .then(response=>{
@@ -141,7 +156,6 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     async getReadme(){
         const mod_id = this.state.mod?.id ?? 0
         if(mod_id == 0) return;
-        this.state.readme = ""
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}/readme`)
             .then(response=>{
@@ -154,7 +168,6 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     async getChangeLog(){
         const mod_id = this.state.mod?.id ?? 0
         if(mod_id == 0) return;
-        this.state.change_log = ""
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}/change-log`)
             .then(response=>{
@@ -167,7 +180,6 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     async getIssues(){
         const mod_id = this.state.mod?.id ?? 0
         if(mod_id == 0) return;
-        this.state.issues = []
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}/issues`)
             .then(response=>{
@@ -180,8 +192,6 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
     async getIssue(issue_id: number){
         const mod_id = this.state.mod?.id ?? 0
         if(mod_id == 0) return;
-        this.state.issue = null
-        this.state.issuePosts = []
         return axios
             .get(`http://localhost:3000/api/v1/mods/mod/${mod_id}/issue/${issue_id}`)
             .then(response=>{
@@ -194,6 +204,10 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
                 this.commit("saveIssueByLoad",issue.issue)
                 this.commit("saveIssuePostsByLoad",issue.posts)
             })
+    }
+
+    async sendPost(text: string){
+
     }
 }
 
