@@ -59,9 +59,9 @@ export default class TheIssue extends Vue {
     return this.issue?.createDate.toLocaleString() ?? ""
   }
 
-  onClickReply(text: string){
-    const temp_text = this.text
-    if(temp_text.trim().length == 0){
+  onClickReply(text_raw: string){
+    const text = text_raw.replaceAll(/(\n|\r|\n\r)/g,"$1> ")
+    if(this.text.trim().length == 0){
       this.text = "> " + text
     }else{
       this.text += "\n> " + text

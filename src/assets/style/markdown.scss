@@ -1,11 +1,20 @@
 .mark-down{
+  font-size: 16px;
+  * {
+    margin-top: 5px;
+  }
 
   blockquote{
-    border-left: 2px solid #c0c0c0;
+    border:{
+      left: 10px solid #c0c0c0;
+    }
     padding-left: 10px;
     padding-top: 2px;
     padding-bottom: 2px;
-    background: #808080;
+    background: #808080a0;
+    img{
+      max-width: 25%;
+    }
   }
 
   pre{
@@ -50,6 +59,19 @@
   ol{
     li{
       margin-left: 20px;
+    }
+  }
+
+  img{
+    max-width: 50%;
+  }
+
+  a{
+    color: #ff8989;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
     }
   }
 }
