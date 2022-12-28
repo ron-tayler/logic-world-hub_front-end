@@ -9,14 +9,14 @@
       .post__buttons
         button.post__button(v-tooltip="'Пожаловаться'")
           font-awesome-icon(icon="fa-solid fa-ban")
-        button.post__button(v-tooltip="'Ответить'")
+        button.post__button(v-tooltip="'Ответить'" @click="onClickReply")
           font-awesome-icon(icon="fa-solid fa-reply")
     .post__body
       .mark-down(ref="post_text")
 </template>
 
 <script lang="ts">
-import {Vue, Component, Prop, Watch} from 'vue-property-decorator'
+import {Vue, Component, Prop, Watch, Emit} from 'vue-property-decorator'
 import {IIssuePost} from "@/store/schemes/Mod";
 import MarkDown from "markdown-it";
 
@@ -38,6 +38,9 @@ export default class ThePost extends Vue {
   mounted(){
     this.renderMarkdown()
   }
+
+  @Emit("onClickReply")
+  onClickReply(){/* emit */}
 
   @Watch("text")
   renderMarkdown(){

@@ -14,7 +14,7 @@
           font-awesome-icon(icon="fa-solid fa-bell")
     hr
     .issue__posts
-      the-post(v-for="post in posts" :key="post.id" :post="post")
+      the-post(v-for="post in posts" :key="post.id" :post="post" @onClickReply="onClickReply(post.text)")
     hr
     .issue__new_post
       .issue__new_post__text_area_box
@@ -57,6 +57,15 @@ export default class TheIssue extends Vue {
   }
   get issueDate(){
     return this.issue?.createDate.toLocaleString() ?? ""
+  }
+
+  onClickReply(text: string){
+    const temp_text = this.text
+    if(temp_text.trim().length == 0){
+      this.text = "> " + text
+    }else{
+      this.text += "\n> " + text
+    }
   }
 
   sendPost(){

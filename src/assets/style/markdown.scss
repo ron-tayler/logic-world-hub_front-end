@@ -1,15 +1,15 @@
 .mark-down{
 
   blockquote{
-    border-left: 2px solid black;
+    border-left: 2px solid #c0c0c0;
     padding-left: 10px;
     padding-top: 2px;
     padding-bottom: 2px;
-    background: #dae9ff;
+    background: #808080;
   }
 
   pre{
-    background: #b2b2b2;
+    background: #808080;
     padding: 5px;
     border-radius: 5px;
   }
@@ -23,19 +23,19 @@
   }
 
   table{
-    border: 1px solid black;
+    border: 1px solid #ffffff;
     border-collapse: collapse;
 
     tr{
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid #ffffff;
     }
     th{
-      border-left: 1px solid black;
+      border-left: 1px solid #ffffff;
       text-align: center;
       padding: 2px 4px;
     }
     td{
-      border-left: 1px solid black;
+      border-left: 1px solid #ffffff;
       text-align: center;
       padding: 2px 4px;
     }
