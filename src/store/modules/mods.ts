@@ -206,6 +206,12 @@ class ModsActions extends Actions<ModsState, ModsGetters, ModsMutations, ModsAct
             })
     }
 
+    async createIssue(params: {name: string, type: number, text: string}){
+        const mod_id = this.state.mod?.id ?? 0
+        if(mod_id == 0) return;
+        return axios
+            .post(`http://localhost:3000/api/v1/mods/mod/${mod_id}/issue/create`,params)
+    }
     async sendPost(text: string){
         const issue_id = this.state.issue?.id ?? 0
         if(issue_id == 0) return;

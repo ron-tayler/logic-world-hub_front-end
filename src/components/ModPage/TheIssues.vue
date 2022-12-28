@@ -2,7 +2,7 @@
   div
     .issues__control
       .issues__control_left
-        button.btn_create_issue Создать обсуждение
+        button.btn_create_issue(@click="onClickCreateIssue") Создать обсуждение
       .issues__filters
         button.issues__filter(:class="{active:filterSelect===-1}" @click="selectFilter(-1)") Все
         button.issues__filter(
@@ -104,6 +104,12 @@ export default class TheIssues extends Vue {
       }
     })
   }
+
+  onClickCreateIssue(){
+    this.$router.push({
+      name: "Mod__Issue__Create"
+    })
+  }
 }
 </script>
 
@@ -180,6 +186,7 @@ export default class TheIssues extends Vue {
   padding: 5px 10px
   border: 2px solid var(--block-border)
   border-radius: 5px
+  cursor: pointer
   &:hover
     background: var(--button-hover-background)
 .issues__filters
@@ -192,6 +199,7 @@ export default class TheIssues extends Vue {
   padding: 2px 4px
   border-radius: 5px
   border: 2px solid var(--block-border)
+  cursor: pointer
   &:hover
     background: var(--button-hover-background)
   &.active

@@ -24,10 +24,11 @@ import {
     faSpinner,
     faBullhorn,
     faLightbulb,
-    faNotdef
+    faNotdef,
 } from "@fortawesome/free-solid-svg-icons";
 import {
-    faGithub
+    faGithub,
+    faMarkdown,
 } from "@fortawesome/free-brands-svg-icons"
 import Vue from "vue";
 
@@ -56,5 +57,6 @@ library.add(faSpinner)
 library.add(faBullhorn)
 library.add(faLightbulb)
 library.add(faNotdef)
+library.add(faMarkdown)
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

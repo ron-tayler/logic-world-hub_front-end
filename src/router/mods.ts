@@ -7,6 +7,7 @@ import TheVersions from "@/components/ModPage/TheVersions.vue";
 import TheIssues from "@/components/ModPage/TheIssues.vue";
 import TheMetrics from "@/components/ModPage/TheMetrics.vue";
 import TheIssue from "@/components/ModPage/TheIssue.vue";
+import TheCreateIssue from "@/components/ModPage/TheCreateIssue.vue";
 
 export const mods: RouteConfig = {
     path: "/mods",
@@ -43,6 +44,11 @@ export const mod: RouteConfig = {
             name: "Mod__Metrics",
             component: TheMetrics,
             meta:{tab: EnumTabs.METRICS}
+        },{
+            path: "issue/create",
+            name: "Mod__Issue__Create",
+            component: TheCreateIssue,
+            meta:{tab: EnumTabs.ISSUES}
         },{
             path: "issue/:issue_id",
             name: "Mod__Issue",

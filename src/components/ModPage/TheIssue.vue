@@ -14,25 +14,15 @@
           font-awesome-icon(icon="fa-solid fa-bell")
     hr
     .issue__posts
-      .issue__post(v-for="post in posts" :key="post.id")
-        .post__header
-          .post__info
-            .post__avatar
-              img(:src="post.author.avatar")
-            .post__nick {{post.author.nick}}
-            .post__date {{post.createDate.toLocaleString()}}
-          .post__buttons
-            button.post__button(v-tooltip="'Пожаловаться'")
-              font-awesome-icon(icon="fa-solid fa-ban")
-            button.post__button(v-tooltip="'Ответить'")
-              font-awesome-icon(icon="fa-solid fa-reply")
-        .post__body
-          span {{post.text}}
+      the-post(v-for="post in posts" :key="post.id" :post="post")
     hr
     .issue__new_post
       .issue__new_post__text_area_box
-        textarea(v-model="text" @keydown.enter="sendPost")
+        textarea(v-model="text" placeholder="Сообщение")
       .issue__new_post__button_box
+        a.issue__new_post__md_help(href="https://www.markdownguide.org/basic-syntax/" target="_blank")
+          font-awesome-icon(icon="fa-brands fa-markdown")
+          span  Поддерживает MarkDown
         button.issue__new_post__button(@click="sendPost") Отправить
 </template>
 
@@ -40,9 +30,11 @@
 import {Component, Vue} from 'vue-property-decorator'
 import {ModsCtx} from "@/store";
 import {EnumIssueType} from "@/store/schemes/EnumIssueType";
+import ThePost from "@/components/ModPage/TheIssue/ThePost.vue";
 
 @Component({
-  name: "TheIssue"
+  name: "TheIssue",
+  components: {ThePost}
 })
 export default class TheIssue extends Vue {
   text = ""
@@ -113,48 +105,6 @@ export default class TheIssue extends Vue {
   display: flex
   flex-direction: column
   gap: 10px
-.issue__post
-  background: var(--list-items-background)
-  padding: 5px
-  border: 2px solid var(--block-border)
-  border-radius: 5px
-  color: var(--text-color)
-.post__header
-  border-bottom: 2px solid gray
-  display: flex
-  justify-content: space-between
-  padding-bottom: 5px
-.post__info
-  display: flex
-  gap: 5px
-  align-items: center
-.post__avatar
-  width: 30px
-  height: 30px
-  border-radius: 30px
-  border: 2px solid var(--block-border)
-  overflow: hidden
-.post__nick
-  color: var(--text-link-color)
-  cursor: pointer
-  &:hover
-    color: var(--text-link-hover-color)
-    text-decoration: underline
-.post__buttons
-  display: flex
-  gap: 5px
-.post__button
-  background: var(--button-background)
-  color: var(--text-color)
-  border: 0
-  border-radius: 5px
-  width: 30px
-  height: 30px
-  cursor: pointer
-  &:hover
-    background: var(--button-hover-background)
-.post__body
-  padding-top: 5px
 .issue__new_post
   display: flex
   flex-direction: column
@@ -175,7 +125,15 @@ export default class TheIssue extends Vue {
     outline: unset
 .issue__new_post__button_box
   display: flex
-  justify-content: end
+  justify-content: space-between
+  align-items: center
+.issue__new_post__md_help
+  color: var(--text-link-second-color)
+  cursor: pointer
+  text-decoration: none
+  &:hover
+    color: var(--text-link-second-hover-color)
+    text-decoration: underline
 .issue__new_post__button
   background: var(--button-background)
   color: var(--text-color)
