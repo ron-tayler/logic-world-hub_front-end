@@ -10,15 +10,15 @@ import {Viewer, ImagePanorama} from "@/lib/panolens.js";
 import {Vue, Component, Watch} from 'vue-property-decorator'
 
 const images = [
-  '/src/assets/background/background (1).jpg',
-  '/src/assets/background/background (2).jpg',
-  '/src/assets/background/background (3).jpg',
-  '/src/assets/background/background (4).jpg',
-  '/src/assets/background/background (5).jpg',
-  '/src/assets/background/background (6).jpg',
-  '/src/assets/background/background (7).jpg',
-  '/src/assets/background/background (8).jpg',
-  '/src/assets/background/background (9).jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_1.jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_2.jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_3.jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_4.jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_5.jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_6.jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_7.jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_8.jpg',
+  'https://831222.selcdn.ru/logic-world-hub/backgrounds/background_9.jpg',
 ]
 
 @Component({

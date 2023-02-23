@@ -25,38 +25,39 @@ import {
     faBullhorn,
     faLightbulb,
     faNotdef,
+    faEye,
+    faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-    faGithub,
-    faMarkdown,
-} from "@fortawesome/free-brands-svg-icons"
+import { faGithub, faMarkdown } from "@fortawesome/free-brands-svg-icons";
 import Vue from "vue";
 
-library.add(faTimes)
-library.add(faStar)
-library.add(faDownload)
-library.add(faIndent)
-library.add(faShare)
-library.add(faUser)
-library.add(faHouse)
-library.add(faBook)
-library.add(faGithub)
-library.add(faBell)
-library.add(faList)
-library.add(faChevronLeft)
-library.add(faChevronRight)
-library.add(faAnglesUp)
-library.add(faComments)
-library.add(faCommentSlash)
-library.add(faReply)
-library.add(faBookmark)
-library.add(faPen)
-library.add(faBug)
-library.add(faBan)
-library.add(faSpinner)
-library.add(faBullhorn)
-library.add(faLightbulb)
-library.add(faNotdef)
-library.add(faMarkdown)
+library.add(faTimes);
+library.add(faStar);
+library.add(faDownload);
+library.add(faIndent);
+library.add(faShare);
+library.add(faUser);
+library.add(faHouse);
+library.add(faBook);
+library.add(faGithub);
+library.add(faBell);
+library.add(faList);
+library.add(faChevronLeft);
+library.add(faChevronRight);
+library.add(faAnglesUp);
+library.add(faComments);
+library.add(faCommentSlash);
+library.add(faReply);
+library.add(faBookmark);
+library.add(faPen);
+library.add(faBug);
+library.add(faBan);
+library.add(faSpinner);
+library.add(faBullhorn);
+library.add(faLightbulb);
+library.add(faNotdef);
+library.add(faMarkdown);
+library.add(faEye);
+library.add(faEyeSlash);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

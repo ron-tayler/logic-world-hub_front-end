@@ -13,6 +13,8 @@
       .mods_window__body
         .mod_list--loading(v-if="is_loading")
           font-awesome-icon(icon="fa-solid fa-spinner" spin-pulse)
+        .mod_list--empty(v-else-if="mods.length === 0")
+          span Список пуст
         .mod_list(v-else)
           .mod(v-for="mod in mods" :key="mod.id")
             .mob__image
@@ -131,6 +133,13 @@ export default class ModListPage extends Vue {
   color: var(--text-color);
   font-size: 24px;
   height: 50px;
+}
+.mod_list--empty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  color: var(--text-color);
 }
 .mod_list{
   display: flex;

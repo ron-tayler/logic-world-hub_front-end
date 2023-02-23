@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h1 Страница профиля другого пользователя
+    h1 Страница профиля
 </template>
 
 <script lang="ts">

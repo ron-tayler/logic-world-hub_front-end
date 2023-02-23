@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.c-row(:style="style")
+  div.c-row(:style="style" v-bind="$attrs")
     slot
 </template>
 
@@ -10,8 +10,8 @@ import {Vue, Component, Prop} from 'vue-property-decorator'
   name: "CRow"
 })
 export default class CRow extends Vue {
-  @Prop()
-  cols: number = 12
+  @Prop({default: 12})
+  cols!: number;
 
   get style(){
     return `grid-template-columns: repeat(${this.cols},1fr);`

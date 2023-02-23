@@ -23,6 +23,8 @@ import "@/assets/style/scroll.scss"
 import "@/assets/style/color-var.scss"
 import "@/assets/style/markdown.scss"
 import TheAppVersion from "@/components/common/TheAppVersion.vue";
+import {UserCtx} from "@/store";
+import api from "@/api";
 
 @Component({
   name: "App",
@@ -80,8 +82,6 @@ body{
 *{
   margin: 0;
   padding: 0;
-}
-div{
   box-sizing: border-box;
 }
 hr{

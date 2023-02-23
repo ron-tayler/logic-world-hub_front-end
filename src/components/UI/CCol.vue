@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.c-col(:style="style")
+  div.c-col(:style="style" v-bind="$attrs")
     slot
 </template>
 
@@ -10,8 +10,8 @@ import {Vue, Component, Prop} from 'vue-property-decorator'
   name: "CCol"
 })
 export default class CCol extends Vue {
-  @Prop()
-  cols: number = 1
+  @Prop({default: 1})
+  cols!: number;
 
   get style(){
     return `grid-column: span ${this.cols}`
